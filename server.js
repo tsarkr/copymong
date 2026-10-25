@@ -87,7 +87,7 @@ const server = http.createServer(async (req, res) => {
       const missing = tool.fields.filter((f) => f !== 'storeName' && f !== 'price' && !input[f]);
       // storeName/price are optional; others required-ish (at least one non-empty check below)
       if (!Object.values(input).some((v) => v.trim())) return json(res, 400, { error: '입력값이 비어 있습니다.' });
-      const result = await askGemini(apiKey, tool.build(input));
+      const result = await askGemini(apiKey, tool.build(input) + '\n\n[공통 규칙] 당신은 AI라는 사실을 밝히는 서두나 "~를 준비했습니다" 같은 메타 설명을 쓰지 마세요. 복사해서 그대로 게시할 수 있는 최종 문구만, 지정된 구성대로 출력하세요.');
       json(res, 200, { result, tool: body.tool, model: MODEL });
     } catch (e) {
       json(res, 500, { error: String(e.message || e).slice(0, 400) });
