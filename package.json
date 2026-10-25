@@ -1,0 +1,1 @@
+{"description":"카피몽 - 소상공인을 위한 AI 리뷰답글 & 마케팅 문구 생성기 (Gemini 기반, 설치형)","engines":{"node":">=18"},"license":"MIT","main":"server.js","name":"copymong","scripts":{"start":"node server.js","test":"node test/smoke.js"},"version":"1.0.0"}
